@@ -1,0 +1,16 @@
+import re
+
+text = re.sub(r'[^a-z A-Z Ä-ü]', '', input())
+
+words = list(set(word.lower() for word in text.split()))
+
+important_words = []
+print("Enter 1 if the word is unknown and important to learn or 0 otherwise:")
+for i in range(len(words)):
+    important = int(input(f"Word {i + 1} - {words[i]}: "))
+
+    if important:
+        important_words.append(words[i])
+
+print("To fully understand this text you will need to learn the following words:")
+print(*sorted(important_words), sep="\n")
